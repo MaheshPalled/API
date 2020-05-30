@@ -1,10 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+/**
+ * Once you’ve created a router object, you can add middleware and HTTP method routes 
+ * (such as get, put, post, and so on) to it just like an application.
+ */
 const promotionRouter = express.Router();
 
+/**
+ * create application/json parser
+ */
 promotionRouter.use(bodyParser.json());
 
+
+/**
+* Method to route when no pomotionID is passed in params.
+*/
 promotionRouter.route('/')
     .all((req, res, next) => {
         res.statusCode = 200;
@@ -25,6 +36,9 @@ promotionRouter.route('/')
         res.end('Deleting all promotions');
     });
 
+/**
+* Method to route when pomotionID is passed in params.
+*/
 promotionRouter.route('/:promotionId')
     .all((req, res, next) => {
         res.statusCode = 200;

@@ -1,10 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+/**
+ * Once you’ve created a router object, you can add middleware and HTTP method routes 
+ * (such as get, put, post, and so on) to it just like an application.
+ */
 const campsiteRouter = express.Router();
 
+/**
+ * create application/json parser
+ */
 campsiteRouter.use(bodyParser.json());
 
+/**
+ * Method to route no capsiteID is passed in params.
+ */
 campsiteRouter.route('/')
 .all((req, res, next) => {
     res.statusCode = 200;
@@ -25,6 +35,9 @@ campsiteRouter.route('/')
     res.end('Deleting all campsites');
 });
 
+/**
+ * Method to route when capsiteID is passed in params.
+ */
 campsiteRouter.route('/:campsiteID')
 .all((req, res, next)=>{
     res.statusCode = 200;
